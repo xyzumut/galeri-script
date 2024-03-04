@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="tr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <div id="resim-galerisi-container">
+            <img style="max-width: 400px;" src="https://placekitten.com/g/400/180" alt="Resim 1">
+            <img style="max-width: 400px;" src="https://placekitten.com/g/200/200" alt="Resim 2">
+            <img style="max-width: 400px;" src="https://placekitten.com/g/1200/980" alt="Resim 3">
+            <img style="max-width: 400px;" src="https://placekitten.com/g/780/500" alt="Resim 4">
+        </div>
+
+        <div id="resim-galerisi-modal">
+            <span id="resim-galerisi-close">&times;</span>
+            <img id="resim-galerisi-image"/>
+            <a id="resim-galerisi-prev">&#10094;</a>
+            <a id="resim-galerisi-next">&#10095;</a>
+        </div>
+
+        <script src="./script.js"></script>
+    </body>
+
+
+    <script>
+        new ResimGalerisi({containerSelector:'#resim-galerisi-container'});
+    </script>
+</html>
