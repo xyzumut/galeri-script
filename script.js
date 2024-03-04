@@ -1,3 +1,6 @@
+
+const bekle = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds*1000));
+
 class ResimGalerisi{
 
     resimler;
@@ -20,7 +23,7 @@ class ResimGalerisi{
         this.next               = document.getElementById('resim-galerisi-next');
         this.prev               = document.getElementById('resim-galerisi-prev');
         this.scale              = 1;
-
+        
         this.index = 0;
 
         Array.from(this.resimler).forEach((img, index) => {
@@ -28,6 +31,7 @@ class ResimGalerisi{
                 this.modal.style.display = 'flex';
                 this.modalImg.src = img.src;
                 this.index = index;
+                this.modalImg.classList.add('resim-galerisi-giris')
             });
         });
 
@@ -36,19 +40,39 @@ class ResimGalerisi{
         });
 
         this.prev.addEventListener('click', () => {
-            this.index--;
-            if (this.index < 0) {
-                this.index = this.resimler.length - 1;
-            }
-            this.modalImg.src = this.resimler[this.index].src;
+
+            this.modalImg.classList.remove('resim-galerisi-giris')
+            this.modalImg.classList.add('resim-galerisi-cikis')
+
+            setTimeout(() => {
+                this.index--;
+                if (this.index < 0) {
+                    this.index = this.resimler.length - 1;
+                }
+                this.modalImg.src = this.resimler[this.index].src;
+                this.modalImg.classList.add('resim-galerisi-giris')
+                this.modalImg.classList.remove('resim-galerisi-cikis')
+               
+            }, 500)
+
         });
 
-        this.next.addEventListener('click', () => {
-            this.index++
-            if (this.index >= this.resimler.length) {
-                this.index = 0;
-            }
-            this.modalImg.src = this.resimler[this.index].src;
+        this.next.addEventListener('click', async () => {
+
+            this.modalImg.classList.remove('resim-galerisi-giris')
+            this.modalImg.classList.add('resim-galerisi-cikis')
+
+            setTimeout( () => {
+                this.index++
+                if (this.index >= this.resimler.length) {
+                    this.index = 0;
+                }
+                this.modalImg.classList.remove('resim-galerisi-cikis')
+                this.modalImg.classList.add('resim-galerisi-giris')
+                this.modalImg.src = this.resimler[this.index].src;
+
+            }, 500)
+
         });
 
         window.onclick = (e) => {
@@ -64,4 +88,5 @@ class ResimGalerisi{
             this.modalImg.style.transform = `scale(${this.scale})`;
         });
     }
+
 }

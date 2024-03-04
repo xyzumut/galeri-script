@@ -67,11 +67,11 @@
 }
 
 .resim-galerisi-cikis{
-    animation: resim-galerisi-cikis 2s ;
+    animation: resim-galerisi-cikis .6s;
 }
 
 .resim-galerisi-giris{
-    animation: resim-galerisi-giris 2s ;
+    animation: resim-galerisi-giris .6s;
 }
 
 @keyframes resim-galerisi-cikis {
